@@ -24,8 +24,8 @@ nav a:hover::after { width:100%; }
 
 .dark-toggle { cursor:pointer; margin-left:20px; border:1px solid var(--header-text); padding:4px 8px; border-radius:4px; font-size:0.9rem; }
 
-.hero { display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; text-align:center; padding:0 20px; background: linear-gradient(135deg, #ff5500, #111); color:#fff; position:relative; overflow:hidden; }
-.hero::before { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background: url('https://images.unsplash.com/photo-1519999482648-25049ddd37b1?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover; opacity:0.15; z-index:0; transform:translateY(0); transition: transform 0.3s ease; }
+.hero { display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; text-align:center; padding:0 20px; color:#fff; position:relative; overflow:hidden; }
+.hero::before { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background: url('https://images.unsplash.com/photo-1519999482648-25049ddd37b1?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover; opacity:0.15; z-index:0; }
 .hero h1, .hero p, .hero .buttons { position:relative; z-index:1; }
 .hero h1 { font-size:3rem; margin:0; opacity:0; transform:scale(0.9); animation: fadeScale 1s ease forwards; }
 .hero p { font-size:1.2rem; margin:10px 0 30px; }
@@ -34,10 +34,10 @@ nav a:hover::after { width:100%; }
 
 main { max-width:1200px; margin:0 auto; padding:50px 20px; }
 
-section { margin-bottom:60px; opacity:0; transform:translateY(50px); transition: all 0.6s ease; position:relative; }
+section { margin-bottom:60px; opacity:0; transform:translateY(50px); transition: all 0.6s ease; position:relative; background-size:cover; background-attachment:fixed; background-position:center; }
 section.visible { opacity:1; transform:translateY(0); }
 
-h2 { color:var(--accent-color); text-align:center; margin-bottom:20px; font-size:2rem; opacity:0; transform:translateY(30px); transition: all 0.6s ease; }
+section h2 { color:var(--accent-color); text-align:center; margin-bottom:20px; font-size:2rem; opacity:0; transform:translateY(30px); transition: all 0.6s ease; }
 
 .card-container { display:flex; flex-direction:column; gap:20px; }
 .card { background: var(--header-bg); padding:20px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition: transform 0.6s cubic-bezier(0.25,1,0.5,1), box-shadow 0.3s, background 0.3s; opacity:0; transform: translateY(50px); position:relative; overflow:hidden; }
@@ -61,7 +61,6 @@ footer { text-align:center; padding:30px; background: var(--header-bg); color: v
 @keyframes fadeScale { to { opacity:1; transform:scale(1); } }
 @keyframes pulse { 0%, 100% { transform:scale(1); } 50% { transform:scale(1.05); } }
 
-/* Responsive Layout: Side-by-side cards on desktop */
 @media screen and (min-width:900px) {
   .card-container { flex-direction: row; flex-wrap: wrap; }
   .card { flex: 1 1 calc(50% - 20px); margin:10px; }
@@ -85,7 +84,7 @@ footer { text-align:center; padding:30px; background: var(--header-bg); color: v
   </nav>
 </header>
 
-<section class="hero">
+<section class="hero" data-parallax style="background-image:url('https://images.unsplash.com/photo-1519999482648-25049ddd37b1?auto=format&fit=crop&w=1600&q=80')">
   <h1>Arun Kare</h1>
   <p>Senior Atlassian Cloud Engineer | Platform Governance | Automation | Modernization</p>
   <div class="buttons">
@@ -95,7 +94,7 @@ footer { text-align:center; padding:30px; background: var(--header-bg); color: v
 </section>
 
 <main>
-  <section id="resume">
+  <section id="resume" data-parallax style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80')">
     <h2>Resume</h2>
     <div class="resume-buttons">
       <a href="assets/resume.pdf" target="_blank">Open PDF</a>
@@ -104,7 +103,7 @@ footer { text-align:center; padding:30px; background: var(--header-bg); color: v
     <iframe src="assets/resume.pdf" width="100%" height="600px"></iframe>
   </section>
 
-  <section id="experience">
+  <section id="experience" data-parallax style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80')">
     <h2>Professional Experience</h2>
     <div class="card-container">
       <div class="card left">
@@ -130,7 +129,7 @@ footer { text-align:center; padding:30px; background: var(--header-bg); color: v
     </div>
   </section>
 
-  <section id="education">
+  <section id="education" data-parallax style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80')">
     <h2>Education</h2>
     <div class="card-container">
       <div class="card left">
@@ -144,7 +143,7 @@ footer { text-align:center; padding:30px; background: var(--header-bg); color: v
     </div>
   </section>
 
-  <section id="certifications">
+  <section id="certifications" data-parallax style="background-image:url('https://images.unsplash.com/photo-1581093588401-6c3e60cda37e?auto=format&fit=crop&w=1600&q=80')">
     <h2>Certifications</h2>
     <div class="card-container">
       <div class="card left">Atlassian Certified Professional (ACP-120)</div>
@@ -155,7 +154,7 @@ footer { text-align:center; padding:30px; background: var(--header-bg); color: v
     </div>
   </section>
 
-  <section id="contact">
+  <section id="contact" data-parallax style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80')">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:arunsagarkare222@gmail.com">arunsagarkare222@gmail.com</a></p>
     <p>Phone: 508-709-9119</p>
@@ -179,7 +178,7 @@ const observer = new IntersectionObserver(entries=>{
         setTimeout(()=>card.classList.add('visible'), index*200);
       });
       const title = entry.target.querySelector('h2');
-      if(title) setTimeout(()=>title.style.opacity=1,title.style.transform='translateY(0)',200);
+      if(title) setTimeout(()=>{title.style.opacity=1; title.style.transform='translateY(0)';},200);
     }
   });
 }, { threshold:0.2 });
@@ -193,10 +192,13 @@ document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Optional: Parallax effect on hero background
+// Parallax effect for all sections
 window.addEventListener('scroll', ()=>{
-  const heroBg = document.querySelector('.hero::before');
-  if(heroBg) heroBg.style.transform = `translateY(${window.scrollY*0.2}px)`;
+  document.querySelectorAll('section[data-parallax]').forEach(section=>{
+    const speed = 0.2;
+    const offset = window.scrollY * speed;
+    section.style.backgroundPosition = `center ${-offset}px`;
+  });
 });
 </script>
 
