@@ -1,181 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arun Kare | Resume</title>
-  <style>
-    /* Base colors and dark mode */
-    :root {
-      --primary-color: #111;
-      --accent-color: #ff5500;
-      --bg-color: #fff;
-      --text-color: #111;
-      --header-bg: #fff;
-      --header-text: #111;
-    }
-    body { font-family: 'Arial', sans-serif; margin:0; padding:0; background:var(--bg-color); color:var(--text-color); scroll-behavior:smooth; transition:0.3s ease; overflow-x:hidden; }
-    body.dark { --bg-color:#111; --text-color:#eee; --header-bg:#111; --header-text:#eee; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arun Kare | Resume</title>
 
-    /* Header */
-    header { position:sticky; top:0; background:var(--header-bg); color:var(--header-text); z-index:100; display:flex; justify-content:space-between; align-items:center; padding:15px 30px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
-    header h1 { margin:0; font-size:1.8rem; }
-    nav a { text-decoration:none; color:var(--header-text); margin-left:20px; font-weight:bold; transition:0.3s; }
-    nav a:hover { color: var(--accent-color); }
-    .dark-toggle { cursor:pointer; margin-left:20px; border:1px solid var(--header-text); padding:4px 8px; border-radius:4px; font-size:0.9rem; }
+<style>
+  :root {
+    --primary-color:#111;
+    --accent-color:#ff5500;
+    --bg-color:#fff;
+    --text-color:#111;
+    --header-bg:#fff;
+    --header-text:#111;
+  }
+  body { font-family:'Arial', sans-serif; margin:0; padding:0; background:var(--bg-color); color:var(--text-color); scroll-behavior:smooth; transition:0.3s ease; overflow-x:hidden; }
+  body.dark { --bg-color:#111; --text-color:#eee; --header-bg:#111; --header-text:#eee; }
 
-    /* Hero */
-    .hero { display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; text-align:center; padding:0 20px; background: linear-gradient(135deg, #ff5500, #111); color:#fff; animation: fadeIn 2s ease; }
-    .hero h1{font-size:3rem; margin:0;}
-    .hero p{font-size:1.2rem; margin:10px 0 30px;}
-    .hero .buttons a{ text-decoration:none; color:#fff; background: var(--accent-color); padding:12px 25px; margin:10px; border-radius:50px; font-weight:bold; transition:0.3s; }
-    .hero .buttons a:hover{background:#fff;color:var(--accent-color);}
+  header { position:sticky; top:0; background:var(--header-bg); color:var(--header-text); z-index:100; display:flex; justify-content:space-between; align-items:center; padding:15px 30px; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+  header h1 { margin:0; font-size:1.8rem; }
+  nav a { text-decoration:none; color:var(--header-text); margin-left:20px; font-weight:bold; transition:0.3s; }
+  nav a:hover { color: var(--accent-color); }
+  .dark-toggle { cursor:pointer; margin-left:20px; border:1px solid var(--header-text); padding:4px 8px; border-radius:4px; font-size:0.9rem; }
 
-    /* Sections */
-    main{max-width:900px;margin:0 auto;padding:50px 20px;}
-    section{margin-bottom:60px; opacity:0; transform:translateY(50px); transition: all 0.6s ease;}
-    section.visible{opacity:1; transform:translateY(0);}
-    h2{color:var(--accent-color); text-align:center; margin-bottom:20px; font-size:2rem;}
+  .hero { display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; text-align:center; padding:0 20px; background: linear-gradient(135deg, #ff5500, #111); color:#fff; }
+  .hero h1 { font-size:3rem; margin:0; opacity:0; transform:scale(0.9); animation: fadeScale 1s ease forwards; }
+  .hero p { font-size:1.2rem; margin:10px 0 30px; }
+  .hero .buttons a { text-decoration:none; color:#fff; background: var(--accent-color); padding:12px 25px; margin:10px; border-radius:50px; font-weight:bold; transition:0.3s; }
+  .hero .buttons a:hover{ background:#fff; color:var(--accent-color); }
 
-    /* Cards */
-    .card-container{display:flex; flex-direction:column; gap:20px;}
-    .card{ background: var(--header-bg); padding:20px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s, background 0.3s; opacity:0; transform: translateX(-100px); }
-    .card.right{ transform: translateX(100px); }
-    .card.visible{opacity:1; transform:translateX(0);}
-    .card:hover{box-shadow:0 8px 20px rgba(0,0,0,0.2);}
-    .card h3{margin-top:0; color:var(--accent-color);}
-    .card p{margin:5px 0;}
+  main { max-width:900px; margin:0 auto; padding:50px 20px; }
+  section { margin-bottom:60px; opacity:0; transform:translateY(50px); transition: all 0.6s ease; }
+  section.visible { opacity:1; transform:translateY(0); }
+  h2 { color:var(--accent-color); text-align:center; margin-bottom:20px; font-size:2rem; }
 
-    /* Resume buttons */
-    .resume-buttons a{display:inline-block; margin:10px; padding:10px 20px; border-radius:50px; background:var(--accent-color); color:#fff; text-decoration:none; font-weight:bold; transition:0.3s;}
-    .resume-buttons a:hover{background:#111; color:var(--accent-color);}
+  .card-container { display:flex; flex-direction:column; gap:20px; }
+  .card { background: var(--header-bg); padding:20px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition: transform 0.6s cubic-bezier(0.25,1,0.5,1), box-shadow 0.3s, background 0.3s; opacity:0; transform: translateY(50px); }
+  .card.left { transform: translateX(-100px); }
+  .card.right { transform: translateX(100px); }
+  .card.visible { opacity:1; transform:translateX(0) translateY(0); }
+  .card:hover { transform:translateY(-10px); box-shadow:0 12px 30px rgba(0,0,0,0.25); }
+  .card h3 { margin-top:0; color:var(--accent-color); }
+  .card p { margin:5px 0; }
 
-    /* Floating Download Button */
-    .floating-download{ position:fixed; bottom:30px; right:30px; background:var(--accent-color); color:#fff; padding:15px 25px; border-radius:50px; font-weight:bold; text-decoration:none; box-shadow:0 4px 8px rgba(0,0,0,0.3); transition:0.3s; z-index:1000; }
-    .floating-download:hover{background:#111; color:var(--accent-color);}
+  .resume-buttons a { display:inline-block; margin:10px; padding:10px 20px; border-radius:50px; background:var(--accent-color); color:#fff; text-decoration:none; font-weight:bold; transition:0.3s; }
+  .resume-buttons a:hover { background:#111; color:var(--accent-color); }
 
-    /* Footer */
-    footer{text-align:center; padding:30px; background: var(--header-bg); color: var(--header-text);}
+  .floating-download { position:fixed; bottom:30px; right:30px; background:var(--accent-color); color:#fff; padding:15px 25px; border-radius:50px; font-weight:bold; text-decoration:none; box-shadow:0 4px 8px rgba(0,0,0,0.3); transition:0.3s; z-index:1000; animation:pulse 2s infinite; }
+  .floating-download:hover { background:#111; color:var(--accent-color); }
 
-    /* Animations */
-    @keyframes fadeIn{from{opacity:0; transform:translateY(50px);} to{opacity:1; transform:translateY(0);}}
-  </style>
+  footer { text-align:center; padding:30px; background: var(--header-bg); color: var(--header-text); }
+
+  @keyframes fadeScale { to { opacity:1; transform:scale(1); } }
+  @keyframes pulse { 0%, 100% { transform:scale(1); } 50% { transform:scale(1.05); } }
+</style>
 </head>
+
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>Arun Kare</h1>
-    <nav>
-      <a href="#resume">Resume</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#contact">Contact</a>
-      <span class="dark-toggle" onclick="toggleDarkMode()">🌙</span>
-    </nav>
-  </header>
+<header>
+  <h1>Arun Kare</h1>
+  <nav>
+    <a href="#resume">Resume</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+    <span class="dark-toggle" onclick="toggleDarkMode()">🌙</span>
+  </nav>
+</header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Arun Kare</h1>
-    <p>Senior Atlassian Cloud Engineer | Platform Governance | Automation | Modernization</p>
-    <div class="buttons">
-      <a href="#resume">View Resume</a>
+<section class="hero">
+  <h1>Arun Kare</h1>
+  <p>Senior Atlassian Cloud Engineer | Platform Governance | Automation | Modernization</p>
+  <div class="buttons">
+    <a href="#resume">View Resume</a>
+    <a href="assets/resume.pdf" download>Download PDF</a>
+  </div>
+</section>
+
+<main>
+  <section id="resume">
+    <h2>Resume</h2>
+    <div class="resume-buttons">
+      <a href="assets/resume.pdf" target="_blank">Open PDF</a>
       <a href="assets/resume.pdf" download>Download PDF</a>
+    </div>
+    <iframe src="assets/resume.pdf" width="100%" height="600px"></iframe>
+  </section>
+
+  <section id="experience">
+    <h2>Professional Experience</h2>
+    <div class="card-container">
+      <div class="card left">
+        <h3>Pilot Flying J – Knoxville, TN</h3>
+        <p>Sr. Atlassian Cloud Engineer | Aug 2024 – Present</p>
+        <p>• Administer Jira, Confluence, Loom, Rovo for 5,000+ users.</p>
+        <p>• Scalable templates & automation reducing manual effort 40%.</p>
+        <p>• ScriptRunner (Groovy) & workflow standardization.</p>
+      </div>
+      <div class="card right">
+        <h3>Prudential Financial – Newark, NJ</h3>
+        <p>Senior Atlassian Administrator | Feb 2022 – Jul 2024</p>
+        <p>• Migration DC → Cloud (89,000+ users).</p>
+        <p>• Governance frameworks & REST/Python automation.</p>
+        <p>• Jira-ServiceNow integration & Marketplace app evaluation.</p>
+      </div>
+      <div class="card left">
+        <h3>Move Inc – Santa Clara, CA</h3>
+        <p>Sr. DevOps / Atlassian Engineer | Mar 2021 – Jan 2022</p>
+        <p>• Jira/Confluence AWS & Azure deployments.</p>
+        <p>• Terraform, Python, CloudFormation automation.</p>
+      </div>
     </div>
   </section>
 
-  <main>
-    <!-- Resume -->
-    <section id="resume">
-      <h2>Resume</h2>
-      <div class="resume-buttons">
-        <a href="assets/resume.pdf" target="_blank">Open PDF</a>
-        <a href="assets/resume.pdf" download>Download PDF</a>
+  <section id="education">
+    <h2>Education</h2>
+    <div class="card-container">
+      <div class="card left">
+        <h3>Master of Science in Computer Science</h3>
+        <p>New England College, NH</p>
       </div>
-      <iframe src="assets/resume.pdf" width="100%" height="600px"></iframe>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience">
-      <h2>Professional Experience</h2>
-      <div class="card-container">
-        <div class="card left">
-          <h3>Pilot Flying J – Knoxville, TN</h3>
-          <p>Sr. Atlassian Cloud Engineer | Aug 2024 – Present</p>
-          <p>• Administer Jira, Confluence, Loom, Rovo for 5,000+ users.</p>
-          <p>• Scalable templates & automation reducing manual effort 40%.</p>
-          <p>• ScriptRunner (Groovy) & workflow standardization.</p>
-        </div>
-        <div class="card right">
-          <h3>Prudential Financial – Newark, NJ</h3>
-          <p>Senior Atlassian Administrator | Feb 2022 – Jul 2024</p>
-          <p>• Migration DC → Cloud (89,000+ users).</p>
-          <p>• Governance frameworks & REST/Python automation.</p>
-          <p>• Jira-ServiceNow integration & Marketplace app evaluation.</p>
-        </div>
-        <div class="card left">
-          <h3>Move Inc – Santa Clara, CA</h3>
-          <p>Sr. DevOps / Atlassian Engineer | Mar 2021 – Jan 2022</p>
-          <p>• Jira/Confluence AWS & Azure deployments.</p>
-          <p>• Terraform, Python, CloudFormation automation.</p>
-        </div>
+      <div class="card right">
+        <h3>Bachelor of Technology in Computer Science & Engineering</h3>
+        <p>Andhra Pradesh, India</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Education -->
-    <section id="education">
-      <h2>Education</h2>
-      <div class="card-container">
-        <div class="card left">
-          <h3>Master of Science in Computer Science</h3>
-          <p>New England College, NH</p>
-        </div>
-        <div class="card right">
-          <h3>Bachelor of Technology in Computer Science & Engineering</h3>
-          <p>Andhra Pradesh, India</p>
-        </div>
-      </div>
-    </section>
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <div class="card-container">
+      <div class="card left">Atlassian Certified Professional (ACP-120)</div>
+      <div class="card right">Atlassian Agile Project Management Professional</div>
+      <div class="card left">Atlassian Rovo Fundamentals</div>
+      <div class="card right">AWS Certified Solutions Architect – Associate</div>
+      <div class="card left">Docker Foundations Professional Certificate</div>
+    </div>
+  </section>
 
-    <!-- Certifications -->
-    <section id="certifications">
-      <h2>Certifications</h2>
-      <div class="card-container">
-        <div class="card left">Atlassian Certified Professional (ACP-120)</div>
-        <div class="card right">Atlassian Agile Project Management Professional</div>
-        <div class="card left">Atlassian Rovo Fundamentals</div>
-        <div class="card right">AWS Certified Solutions Architect – Associate</div>
-        <div class="card left">Docker Foundations Professional Certificate</div>
-      </div>
-    </section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:arunsagarkare222@gmail.com">arunsagarkare222@gmail.com</a></p>
+    <p>Phone: 508-709-9119</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/arunkare" target="_blank">linkedin.com/in/arunkare</a></p>
+  </section>
+</main>
 
-    <!-- Contact -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:arunsagarkare222@gmail.com">arunsagarkare222@gmail.com</a></p>
-      <p>Phone: 508-709-9119</p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/arunkare" target="_blank">linkedin.com/in/arunkare</a></p>
-    </section>
-  </main>
+<a class="floating-download" href="assets/resume.pdf" download>Download Resume</a>
+<footer>&copy; 2026 Arun Kare. All Rights Reserved.</footer>
 
-  <!-- Floating Download -->
-  <a class="floating-download" href="assets/resume.pdf" download>Download Resume</a>
+<script>
+  function toggleDarkMode(){ document.body.classList.toggle('dark'); }
 
-  <footer>&copy; 2026 Arun Kare. All Rights Reserved.</footer>
+  // Intersection Observer for sections & cards
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        const cards = entry.target.querySelectorAll('.card');
+        cards.forEach((card, index)=>{
+          setTimeout(()=>card.classList.add('visible'), index*200);
+        });
+      }
+    });
+  }, { threshold:0.2 });
 
-  <script>
-    // Dark mode toggle
-    function toggleDarkMode(){document.body.classList.toggle('dark');}
+  document.querySelectorAll('section, .card-container').forEach(el => observer.observe(el));
+</script>
 
-    // Scroll animations
-    const observer = new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){ entry.target.classList.add('visible'); }
-      });
-    }, { threshold:0.2 });
-    document.querySelectorAll('section, .card').forEach(el => observer.observe(el));
-  </script>
 </body>
 </html>
