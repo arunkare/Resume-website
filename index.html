@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Arun Kare | Sr. Atlassian Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Arun Kare - Senior Atlassian Cloud Engineer specializing in governance, automation, and modernization.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,6 +16,7 @@
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
+      <a href="#resume">Resume</a>
       <a href="#contact">Contact</a>
       <button id="darkToggle">🌙</button>
     </nav>
@@ -30,29 +32,25 @@
   <h2>About Me</h2>
   <p>
     Atlassian Certified Professional with 6+ years of experience modernizing 
-    enterprise Atlassian Cloud ecosystems. I design scalable self-service models, 
-    enforce governance guardrails, and build advanced automation frameworks 
-    that reduce operational friction.
+    enterprise Atlassian Cloud ecosystems. Expert in scalable self-service models,
+    governance guardrails, automation frameworks, and cross-functional enablement.
   </p>
 </section>
 
 <section id="experience" class="section reveal">
   <h2>Experience</h2>
-
   <div class="timeline">
 
     <div class="timeline-item">
       <h3>Pilot Flying J</h3>
       <span>Sr. Atlassian Cloud Engineer | 2024–Present</span>
-      <p>Administer Jira, JSM, Confluence, Rovo & Loom for 5,000+ users. 
-      Built scalable automation frameworks reducing manual effort by 40%.</p>
+      <p>Administer Jira, JSM, Confluence, Rovo & Loom for 5,000+ users. Built scalable automation frameworks reducing manual effort by 40%.</p>
     </div>
 
     <div class="timeline-item">
       <h3>Prudential Financial</h3>
       <span>Senior Atlassian Administrator | 2022–2024</span>
-      <p>Led Atlassian Data Center → Cloud migration supporting 89,000+ users. 
-      Designed governance frameworks and standardized workflow libraries.</p>
+      <p>Led Data Center → Cloud migration supporting 89,000+ users. Designed governance frameworks and standardized workflows.</p>
     </div>
 
     <div class="timeline-item">
@@ -80,14 +78,48 @@
   </div>
 </section>
 
+<section id="resume" class="section reveal">
+  <h2>Resume</h2>
+
+  <div class="resume-badge">
+    <span>Cloud</span>
+    <span>Governance</span>
+    <span>Automation</span>
+  </div>
+
+  <div class="resume-actions">
+    <button onclick="openModal()" class="primary-btn">View Resume</button>
+    <a href="./resume.pdf" download class="secondary-btn">Download PDF</a>
+  </div>
+
+  <div class="resume-preview">
+    <h3>Arun Kare</h3>
+    <p>Senior Atlassian Cloud Engineer</p>
+    <ul>
+      <li>6+ years Atlassian Cloud administration</li>
+      <li>Supported 89K+ users</li>
+      <li>Governance & scalable architecture</li>
+      <li>Advanced Jira Automation & ScriptRunner</li>
+      <li>Cloud migration expertise</li>
+    </ul>
+  </div>
+</section>
+
 <section id="contact" class="section reveal">
   <h2>Contact</h2>
   <p>Email: arunkare84@gmail.com</p>
   <p>Phone: 508-709-9119</p>
-  <p>LinkedIn: Add your link here</p>
 </section>
 
-<a href="resume.pdf" class="download-btn">Download Resume</a>
+<a href="./resume.pdf" download class="floating-download">⬇</a>
+
+<!-- Resume Modal -->
+<div id="resumeModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <iframe src="./resume.pdf" width="100%" height="600px"></iframe>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
