@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arun Kare | Resume</title>
   <style>
-    /* Base styles */
+    /* Base */
     :root {
       --primary-color: #111;
       --accent-color: #ff5500;
@@ -47,158 +47,62 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
+    header h1 { margin:0; font-size:1.8rem; }
+    nav a { text-decoration:none; color:var(--header-text); margin-left:20px; font-weight:bold; transition:0.3s; }
+    nav a:hover { color: var(--accent-color); }
+    .dark-toggle { cursor:pointer; margin-left:20px; border:1px solid var(--header-text); padding:4px 8px; border-radius:4px; font-size:0.9rem; }
 
-    nav a {
-      text-decoration: none;
-      color: var(--header-text);
-      margin-left: 20px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: var(--accent-color);
-    }
-
-    .dark-toggle {
-      cursor: pointer;
-      margin-left: 20px;
-      border: 1px solid var(--header-text);
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 0.9rem;
-    }
-
-    /* Hero Section */
+    /* Hero */
     .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      padding: 0 20px;
-      background: linear-gradient(135deg, #ff5500, #111);
-      color: #fff;
+      display:flex; flex-direction:column; justify-content:center; align-items:center;
+      height:100vh; text-align:center; padding:0 20px;
+      background: linear-gradient(135deg, #ff5500, #111); color:#fff;
       animation: fadeIn 2s ease;
     }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin: 0;
+    .hero h1{font-size:3rem; margin:0;}
+    .hero p{font-size:1.2rem; margin:10px 0 30px;}
+    .hero .buttons a{
+      text-decoration:none; color:#fff; background: var(--accent-color);
+      padding:12px 25px; margin:10px; border-radius:50px; font-weight:bold;
+      transition:0.3s;
     }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin: 10px 0 30px;
-    }
-
-    .hero .buttons a {
-      text-decoration: none;
-      color: #fff;
-      background: var(--accent-color);
-      padding: 12px 25px;
-      margin: 10px;
-      border-radius: 50px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .hero .buttons a:hover {
-      background: #fff;
-      color: var(--accent-color);
-    }
+    .hero .buttons a:hover{background:#fff;color:var(--accent-color);}
 
     /* Sections */
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 50px 20px;
-    }
+    main{max-width:900px;margin:0 auto;padding:50px 20px;}
+    section{margin-bottom:60px; opacity:0; transform:translateY(50px); transition: all 0.6s ease;}
+    section.visible{opacity:1; transform:translateY(0);}
+    h2{color:var(--accent-color); text-align:center; margin-bottom:20px; font-size:2rem;}
 
-    section {
-      margin-bottom: 60px;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+    /* Cards */
+    .card-container{display:flex; flex-direction:column; gap:20px;}
+    .card{
+      background: var(--header-bg); padding:20px; border-radius:15px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      opacity:0; transform: translateX(-100px);
     }
+    .card.right{transform: translateX(100px);}
+    .card.visible{opacity:1; transform:translateX(0);}
+    .card:hover{box-shadow:0 8px 20px rgba(0,0,0,0.2);}
+    .card h3{margin-top:0; color:var(--accent-color);}
+    .card p{margin:5px 0;}
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    h2 {
-      color: var(--accent-color);
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 2rem;
-    }
-
-    .resume-buttons a {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      border-radius: 50px;
-      background: var(--accent-color);
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .resume-buttons a:hover {
-      background: #111;
-      color: var(--accent-color);
-    }
-
-    /* Lists */
-    .experience, .education, .certifications {
-      list-style: none;
-      padding: 0;
-    }
-
-    .experience li, .education li, .certifications li {
-      margin-bottom: 15px;
-    }
+    /* PDF Buttons */
+    .resume-buttons a{display:inline-block; margin:10px; padding:10px 20px; border-radius:50px; background:var(--accent-color); color:#fff; text-decoration:none; font-weight:bold; transition:0.3s;}
+    .resume-buttons a:hover{background:#111; color:var(--accent-color);}
 
     /* Floating Download Button */
-    .floating-download {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: var(--accent-color);
-      color: #fff;
-      padding: 15px 25px;
-      border-radius: 50px;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      transition: 0.3s;
-      z-index: 1000;
+    .floating-download{
+      position:fixed; bottom:30px; right:30px; background:var(--accent-color); color:#fff; padding:15px 25px;
+      border-radius:50px; font-weight:bold; text-decoration:none; box-shadow:0 4px 8px rgba(0,0,0,0.3); transition:0.3s; z-index:1000;
     }
+    .floating-download:hover{background:#111; color:var(--accent-color);}
 
-    .floating-download:hover {
-      background: #111;
-      color: var(--accent-color);
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: var(--header-bg);
-      color: var(--header-text);
-    }
+    /* Footer */
+    footer{text-align:center; padding:30px; background: var(--header-bg); color: var(--header-text);}
 
     /* Animations */
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(50px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
+    @keyframes fadeIn{from{opacity:0; transform:translateY(50px);} to{opacity:1; transform:translateY(0);}}
   </style>
 </head>
 <body>
@@ -216,66 +120,79 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
     <h1>Arun Kare</h1>
     <p>Senior Atlassian Cloud Engineer | Platform Governance | Automation | Modernization</p>
     <div class="buttons">
       <a href="#resume">View Resume</a>
-      <a href="https://github.com/arunkare/Resume-website/raw/main/resume.pdf" download>Download PDF</a>
+      <a href="assets/resume.pdf" download>Download PDF</a>
     </div>
   </section>
 
   <main>
-    <!-- Resume Section -->
+    <!-- Resume -->
     <section id="resume">
       <h2>Resume</h2>
       <div class="resume-buttons">
-        <a href="https://github.com/arunkare/Resume-website/raw/main/resume.pdf" target="_blank">Open PDF</a>
-        <a href="https://github.com/arunkare/Resume-website/raw/main/resume.pdf" download>Download PDF</a>
+        <a href="assets/resume.pdf" target="_blank">Open PDF</a>
+        <a href="assets/resume.pdf" download>Download PDF</a>
       </div>
-      <iframe src="https://github.com/arunkare/Resume-website/raw/main/resume.pdf" width="100%" height="600px"></iframe>
+      <iframe src="assets/resume.pdf" width="100%" height="600px"></iframe>
     </section>
 
     <!-- Experience -->
     <section id="experience">
       <h2>Professional Experience</h2>
-      <ul class="experience">
-        <li><strong>Pilot Flying J – Knoxville, TN</strong><br>Sr. Atlassian Cloud Engineer | Aug 2024 – Present<br>
-        • Administer Jira, Confluence, Loom, Rovo for 5,000+ users.<br>
-        • Scalable templates & automation reducing manual effort 40%.<br>
-        • ScriptRunner (Groovy) & workflow standardization.</li>
-
-        <li><strong>Prudential Financial – Newark, NJ</strong><br>Senior Atlassian Administrator | Feb 2022 – Jul 2024<br>
-        • Migration DC → Cloud (89,000+ users).<br>
-        • Governance frameworks & REST/Python automation.<br>
-        • Jira-ServiceNow integration & Marketplace app evaluation.</li>
-
-        <li><strong>Move Inc – Santa Clara, CA</strong><br>Sr. DevOps / Atlassian Engineer | Mar 2021 – Jan 2022<br>
-        • Jira/Confluence AWS & Azure deployments.<br>
-        • Terraform, Python, CloudFormation automation.</li>
-      </ul>
+      <div class="card-container">
+        <div class="card left">
+          <h3>Pilot Flying J – Knoxville, TN</h3>
+          <p>Sr. Atlassian Cloud Engineer | Aug 2024 – Present</p>
+          <p>• Administer Jira, Confluence, Loom, Rovo for 5,000+ users.</p>
+          <p>• Scalable templates & automation reducing manual effort 40%.</p>
+          <p>• ScriptRunner (Groovy) & workflow standardization.</p>
+        </div>
+        <div class="card right">
+          <h3>Prudential Financial – Newark, NJ</h3>
+          <p>Senior Atlassian Administrator | Feb 2022 – Jul 2024</p>
+          <p>• Migration DC → Cloud (89,000+ users).</p>
+          <p>• Governance frameworks & REST/Python automation.</p>
+          <p>• Jira-ServiceNow integration & Marketplace app evaluation.</p>
+        </div>
+        <div class="card left">
+          <h3>Move Inc – Santa Clara, CA</h3>
+          <p>Sr. DevOps / Atlassian Engineer | Mar 2021 – Jan 2022</p>
+          <p>• Jira/Confluence AWS & Azure deployments.</p>
+          <p>• Terraform, Python, CloudFormation automation.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Education -->
     <section id="education">
       <h2>Education</h2>
-      <ul class="education">
-        <li>Master of Science in Computer Science – New England College, NH</li>
-        <li>Bachelor of Technology in Computer Science & Engineering – Andhra Pradesh, India</li>
-      </ul>
+      <div class="card-container">
+        <div class="card left">
+          <h3>Master of Science in Computer Science</h3>
+          <p>New England College, NH</p>
+        </div>
+        <div class="card right">
+          <h3>Bachelor of Technology in Computer Science & Engineering</h3>
+          <p>Andhra Pradesh, India</p>
+        </div>
+      </div>
     </section>
 
     <!-- Certifications -->
     <section id="certifications">
       <h2>Certifications</h2>
-      <ul class="certifications">
-        <li>Atlassian Certified Professional (ACP-120)</li>
-        <li>Atlassian Agile Project Management Professional</li>
-        <li>Atlassian Rovo Fundamentals</li>
-        <li>AWS Certified Solutions Architect – Associate</li>
-        <li>Docker Foundations Professional Certificate</li>
-      </ul>
+      <div class="card-container">
+        <div class="card left">Atlassian Certified Professional (ACP-120)</div>
+        <div class="card right">Atlassian Agile Project Management Professional</div>
+        <div class="card left">Atlassian Rovo Fundamentals</div>
+        <div class="card right">AWS Certified Solutions Architect – Associate</div>
+        <div class="card left">Docker Foundations Professional Certificate</div>
+      </div>
     </section>
 
     <!-- Contact -->
@@ -287,33 +204,25 @@
     </section>
   </main>
 
-  <!-- Floating Download Button -->
-  <a class="floating-download" href="https://github.com/arunkare/Resume-website/raw/main/resume.pdf" download>Download Resume</a>
+  <!-- Floating Download -->
+  <a class="floating-download" href="assets/resume.pdf" download>Download Resume</a>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2026 Arun Kare. All Rights Reserved.
-  </footer>
+  <footer>&copy; 2026 Arun Kare. All Rights Reserved.</footer>
 
-  <!-- Scripts -->
   <script>
-    // Dark Mode Toggle
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark');
-    }
+    // Dark mode
+    function toggleDarkMode(){document.body.classList.toggle('dark');}
 
     // Scroll animations
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
         if(entry.isIntersecting){
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.2 });
+    }, { threshold:0.2 });
 
-    sections.forEach(section => observer.observe(section));
+    document.querySelectorAll('section, .card').forEach(el => observer.observe(el));
   </script>
-
 </body>
 </html>
