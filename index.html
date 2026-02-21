@@ -72,8 +72,14 @@ footer { text-align:center; padding:30px; background: var(--header-bg); color: v
 
 /* Hover shadow for background sections */
 section[data-parallax] { transition: box-shadow 0.4s ease, transform 0.4s ease; }
-#contact::before { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index:0; }
-#contact * { position: relative; z-index:1; }
+
+/* Contact section fix */
+#contact { position: relative; color:#fff; padding:60px 20px; text-align:center; }
+#contact::before { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index:0; }
+#contact * { position: relative; z-index:1; font-size:1.1rem; line-height:1.6rem; }
+#contact a { color:#ff8800; text-decoration:underline; }
+#contact a:hover { color:#fff; }
+
 </style>
 </head>
 <body>
