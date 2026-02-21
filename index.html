@@ -40,7 +40,8 @@ section.visible { opacity:1; transform:translateY(0); }
 section h2 { color:var(--accent-color); text-align:center; margin-bottom:20px; font-size:2rem; opacity:0; transform:translateY(30px); transition: all 0.6s ease; }
 
 .card-container { display:flex; flex-direction:column; gap:20px; }
-.card { background: var(--header-bg); padding:20px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition: transform 0.6s cubic-bezier(0.25,1,0.5,1), box-shadow 0.3s, background 0.3s; opacity:0; transform: translateY(50px); position:relative; overflow:hidden; }
+.card { background: var(--header-bg); padding:20px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition: transform 0.6s cubic-bezier(0.25,1,0.5,1), box-shadow 0.3s, background 0.3s; opacity:0; transform: translateY(50px); position:relative; overflow:hidden; perspective:1000px; }
+.card-inner { transform-style: preserve-3d; transition: transform 0.3s ease; }
 .card.left { transform: translateX(-100px); }
 .card.right { transform: translateX(100px); }
 .card.visible { opacity:1; transform:translateX(0) translateY(0); }
@@ -107,24 +108,30 @@ footer { text-align:center; padding:30px; background: var(--header-bg); color: v
     <h2>Professional Experience</h2>
     <div class="card-container">
       <div class="card left">
-        <h3>Pilot Flying J – Knoxville, TN</h3>
-        <p>Sr. Atlassian Cloud Engineer | Aug 2024 – Present</p>
-        <p>• Administer Jira, Confluence, Loom, Rovo for 5,000+ users.</p>
-        <p>• Scalable templates & automation reducing manual effort 40%.</p>
-        <p>• ScriptRunner (Groovy) & workflow standardization.</p>
+        <div class="card-inner">
+          <h3>Pilot Flying J – Knoxville, TN</h3>
+          <p>Sr. Atlassian Cloud Engineer | Aug 2024 – Present</p>
+          <p>• Administer Jira, Confluence, Loom, Rovo for 5,000+ users.</p>
+          <p>• Scalable templates & automation reducing manual effort 40%.</p>
+          <p>• ScriptRunner (Groovy) & workflow standardization.</p>
+        </div>
       </div>
       <div class="card right">
-        <h3>Prudential Financial – Newark, NJ</h3>
-        <p>Senior Atlassian Administrator | Feb 2022 – Jul 2024</p>
-        <p>• Migration DC → Cloud (89,000+ users).</p>
-        <p>• Governance frameworks & REST/Python automation.</p>
-        <p>• Jira-ServiceNow integration & Marketplace app evaluation.</p>
+        <div class="card-inner">
+          <h3>Prudential Financial – Newark, NJ</h3>
+          <p>Senior Atlassian Administrator | Feb 2022 – Jul 2024</p>
+          <p>• Migration DC → Cloud (89,000+ users).</p>
+          <p>• Governance frameworks & REST/Python automation.</p>
+          <p>• Jira-ServiceNow integration & Marketplace app evaluation.</p>
+        </div>
       </div>
       <div class="card left">
-        <h3>Move Inc – Santa Clara, CA</h3>
-        <p>Sr. DevOps / Atlassian Engineer | Mar 2021 – Jan 2022</p>
-        <p>• Jira/Confluence AWS & Azure deployments.</p>
-        <p>• Terraform, Python, CloudFormation automation.</p>
+        <div class="card-inner">
+          <h3>Move Inc – Santa Clara, CA</h3>
+          <p>Sr. DevOps / Atlassian Engineer | Mar 2021 – Jan 2022</p>
+          <p>• Jira/Confluence AWS & Azure deployments.</p>
+          <p>• Terraform, Python, CloudFormation automation.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -132,25 +139,25 @@ footer { text-align:center; padding:30px; background: var(--header-bg); color: v
   <section id="education" data-parallax style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80')">
     <h2>Education</h2>
     <div class="card-container">
-      <div class="card left">
+      <div class="card left"><div class="card-inner">
         <h3>Master of Science in Computer Science</h3>
         <p>New England College, NH</p>
-      </div>
-      <div class="card right">
+      </div></div>
+      <div class="card right"><div class="card-inner">
         <h3>Bachelor of Technology in Computer Science & Engineering</h3>
         <p>Andhra Pradesh, India</p>
-      </div>
+      </div></div>
     </div>
   </section>
 
   <section id="certifications" data-parallax style="background-image:url('https://images.unsplash.com/photo-1581093588401-6c3e60cda37e?auto=format&fit=crop&w=1600&q=80')">
     <h2>Certifications</h2>
     <div class="card-container">
-      <div class="card left">Atlassian Certified Professional (ACP-120)</div>
-      <div class="card right">Atlassian Agile Project Management Professional</div>
-      <div class="card left">Atlassian Rovo Fundamentals</div>
-      <div class="card right">AWS Certified Solutions Architect – Associate</div>
-      <div class="card left">Docker Foundations Professional Certificate</div>
+      <div class="card left"><div class="card-inner">Atlassian Certified Professional (ACP-120)</div></div>
+      <div class="card right"><div class="card-inner">Atlassian Agile Project Management Professional</div></div>
+      <div class="card left"><div class="card-inner">Atlassian Rovo Fundamentals</div></div>
+      <div class="card right"><div class="card-inner">AWS Certified Solutions Architect – Associate</div></div>
+      <div class="card left"><div class="card-inner">Docker Foundations Professional Certificate</div></div>
     </div>
   </section>
 
@@ -172,11 +179,9 @@ function toggleDarkMode(){ document.body.classList.toggle('dark'); }
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
-      // stagger section titles
       const title = entry.target.querySelector('h2');
       if(title) setTimeout(() => {title.style.opacity=1; title.style.transform='translateY(0)';}, 200);
 
-      // stagger cards per row
       const cards = entry.target.querySelectorAll('.card');
       cards.forEach((card,index)=>{
         const desktopCols = window.innerWidth >= 1300 ? 3 : (window.innerWidth >= 900 ? 2 : 1);
@@ -185,7 +190,6 @@ const observer = new IntersectionObserver(entries=>{
         setTimeout(()=>card.classList.add('visible'), delay);
       });
 
-      // section background
       setTimeout(()=>entry.target.classList.add('visible'), 100);
     }
   });
@@ -208,7 +212,22 @@ window.addEventListener('scroll', ()=>{
     section.style.backgroundPosition = `center ${-offset}px`;
   });
 });
-</script>
 
+// Subtle hover parallax for cards
+document.querySelectorAll('.card').forEach(card => {
+  const inner = card.querySelector('.card-inner');
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width/2;
+    const cy = rect.height/2;
+    const dx = (x - cx)/cx;
+    const dy = (y - cy)/cy;
+    inner.style.transform = `rotateY(${dx*5}deg) rotateX(${-dy*5}deg)`;
+  });
+  card.addEventListener('mouseleave', () => { inner.style.transform = 'rotateY(0deg) rotateX(0deg)'; });
+});
+</script>
 </body>
 </html>
