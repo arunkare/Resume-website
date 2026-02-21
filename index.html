@@ -2,125 +2,120 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Arun Kare | Sr. Atlassian Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Arun Kare - Senior Atlassian Cloud Engineer specializing in governance, automation, and modernization.">
-  <link rel="stylesheet" href="style.css">
+  <title>Arun Kare - Resume</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #007acc;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: #007acc;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px 0;
+      background-color: #007acc;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    a.button:hover {
+      background-color: #005fa3;
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #e0e0e0;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
 
-<header class="header">
-  <div class="container">
+  <header>
     <h1>Arun Kare</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#resume">Resume</a>
-      <a href="#contact">Contact</a>
-      <button id="darkToggle">🌙</button>
-    </nav>
-  </div>
-</header>
+    <p>Welcome to my Resume Website</p>
+  </header>
 
-<section class="hero reveal">
-  <h2>Senior Atlassian Cloud Engineer</h2>
-  <p>Platform Governance | Automation | Modernization | 89K+ Enterprise Support</p>
-</section>
+  <main>
+    <section id="resume">
+      <h2>My Resume</h2>
 
-<section id="about" class="section reveal">
-  <h2>About Me</h2>
-  <p>
-    Atlassian Certified Professional with 6+ years of experience modernizing 
-    enterprise Atlassian Cloud ecosystems. Expert in scalable self-service models,
-    governance guardrails, automation frameworks, and cross-functional enablement.
-  </p>
-</section>
+      <!-- 1. View Resume -->
+      <p>
+        <a class="button" href="https://arunkare.github.io/Resume-website/resume.pdf" target="_blank">
+          View Resume
+        </a>
+      </p>
 
-<section id="experience" class="section reveal">
-  <h2>Experience</h2>
-  <div class="timeline">
+      <!-- 2. Download Resume -->
+      <p>
+        <a class="button" href="https://arunkare.github.io/Resume-website/resume.pdf" download>
+          Download Resume
+        </a>
+      </p>
 
-    <div class="timeline-item">
-      <h3>Pilot Flying J</h3>
-      <span>Sr. Atlassian Cloud Engineer | 2024–Present</span>
-      <p>Administer Jira, JSM, Confluence, Rovo & Loom for 5,000+ users. Built scalable automation frameworks reducing manual effort by 40%.</p>
-    </div>
+      <!-- 3. Embed Resume -->
+      <iframe src="https://arunkare.github.io/Resume-website/resume.pdf"></iframe>
+    </section>
 
-    <div class="timeline-item">
-      <h3>Prudential Financial</h3>
-      <span>Senior Atlassian Administrator | 2022–2024</span>
-      <p>Led Data Center → Cloud migration supporting 89,000+ users. Designed governance frameworks and standardized workflows.</p>
-    </div>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Hello! I am Arun Kare, passionate about building and exploring modern web solutions. This is my professional resume and portfolio.</p>
+    </section>
 
-    <div class="timeline-item">
-      <h3>Move Inc</h3>
-      <span>Sr. DevOps / Atlassian Engineer | 2021–2022</span>
-      <p>Deployed Jira & Confluence on AWS & Azure. Integrated CI/CD pipelines and SAML authentication.</p>
-    </div>
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/arunkare" target="_blank">linkedin.com/in/arunkare</a></p>
+    </section>
+  </main>
 
-  </div>
-</section>
+  <footer>
+    <p>&copy; 2026 Arun Kare. All rights reserved.</p>
+  </footer>
 
-<section id="skills" class="section reveal">
-  <h2>Core Skills</h2>
-  <div class="skills-grid">
-    <span>Jira Software</span>
-    <span>Jira Service Management</span>
-    <span>Confluence Cloud</span>
-    <span>Rovo</span>
-    <span>ScriptRunner</span>
-    <span>Advanced Automation</span>
-    <span>Cloud Migration</span>
-    <span>GitHub Governance</span>
-    <span>Python & Java</span>
-    <span>SAML / Atlassian Access</span>
-  </div>
-</section>
-
-<section id="resume" class="section reveal">
-  <h2>Resume</h2>
-
-  <div class="resume-badge">
-    <span>Cloud</span>
-    <span>Governance</span>
-    <span>Automation</span>
-  </div>
-
-  <div class="resume-actions">
-    <button onclick="openModal()" class="primary-btn">View Resume</button>
-    <a href="./resume.pdf" download class="secondary-btn">Download PDF</a>
-  </div>
-
-  <div class="resume-preview">
-    <h3>Arun Kare</h3>
-    <p>Senior Atlassian Cloud Engineer</p>
-    <ul>
-      <li>6+ years Atlassian Cloud administration</li>
-      <li>Supported 89K+ users</li>
-      <li>Governance & scalable architecture</li>
-      <li>Advanced Jira Automation & ScriptRunner</li>
-      <li>Cloud migration expertise</li>
-    </ul>
-  </div>
-</section>
-
-<section id="contact" class="section reveal">
-  <h2>Contact</h2>
-  <p>Email: arunkare84@gmail.com</p>
-  <p>Phone: 508-709-9119</p>
-</section>
-
-<a href="./resume.pdf" download class="floating-download">⬇</a>
-
-<!-- Resume Modal -->
-<div id="resumeModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <iframe src="./resume.pdf" width="100%" height="600px"></iframe>
-  </div>
-</div>
-
-<script src="script.js"></script>
 </body>
 </html>
