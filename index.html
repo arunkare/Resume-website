@@ -168,33 +168,29 @@ footer { text-align:center; padding:30px; background: var(--header-bg); color: v
 <script>
 function toggleDarkMode(){ document.body.classList.toggle('dark'); }
 
-// Intersection Observer for cards
+// Intersection Observer for staggered card & section animations
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
-      entry.target.classList.add('visible');
+      // stagger section titles
+      const title = entry.target.querySelector('h2');
+      if(title) setTimeout(() => {title.style.opacity=1; title.style.transform='translateY(0)';}, 200);
+
+      // stagger cards per row
       const cards = entry.target.querySelectorAll('.card');
       cards.forEach((card,index)=>{
-        setTimeout(()=>card.classList.add('visible'), index*200);
+        const desktopCols = window.innerWidth >= 1300 ? 3 : (window.innerWidth >= 900 ? 2 : 1);
+        const rowIndex = Math.floor(index / desktopCols);
+        const delay = rowIndex * 200 + (index % desktopCols) * 100;
+        setTimeout(()=>card.classList.add('visible'), delay);
       });
-      const title = entry.target.querySelector('h2');
-      if(title) setTimeout(()=>{title.style.opacity=1; title.style.transform='translateY(0)';},200);
+
+      // section background
+      setTimeout(()=>entry.target.classList.add('visible'), 100);
     }
   });
 }, { threshold:0.2 });
-document.querySelectorAll('section, .card-container').forEach(el => observer.observe(el));
-
-// Intersection Observer for staggered background entrances
-const sectionObserver = new IntersectionObserver(entries=>{
-  entries.forEach((entry,index)=>{
-    if(entry.isIntersecting){
-      setTimeout(()=>{
-        entry.target.classList.add('visible');
-      }, index * 200);
-    }
-  });
-}, {threshold:0.2});
-document.querySelectorAll('section[data-parallax]').forEach(section=>sectionObserver.observe(section));
+document.querySelectorAll('section').forEach(el => observer.observe(el));
 
 // Smooth scroll for nav links
 document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
