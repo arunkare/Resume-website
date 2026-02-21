@@ -3,46 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arun Kare - Resume</title>
+  <title>Arun Kare | Resume</title>
   <style>
-    /* Base Styles */
+    /* Base styles */
     :root {
-      --primary-color: #007acc;
-      --bg-color: #f5f5f5;
-      --text-color: #333;
-      --header-bg: #007acc;
-      --header-text: white;
+      --primary-color: #111;
+      --accent-color: #ff5500;
+      --bg-color: #fff;
+      --text-color: #111;
+      --header-bg: #fff;
+      --header-text: #111;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
+      font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: var(--bg-color);
+      background: var(--bg-color);
       color: var(--text-color);
       scroll-behavior: smooth;
-      transition: background 0.3s, color 0.3s;
+      transition: all 0.3s ease;
+      overflow-x: hidden;
     }
 
-    /* Dark mode */
     body.dark {
-      --bg-color: #121212;
-      --text-color: #e0e0e0;
-      --header-bg: #1f1f1f;
-      --header-text: #e0e0e0;
+      --bg-color: #111;
+      --text-color: #eee;
+      --header-bg: #111;
+      --header-text: #eee;
     }
 
+    /* Header */
     header {
-      background-color: var(--header-bg);
-      color: var(--header-text);
-      padding: 15px 20px;
       position: sticky;
       top: 0;
+      background: var(--header-bg);
+      color: var(--header-text);
       z-index: 100;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 15px 30px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
@@ -52,93 +53,151 @@
     }
 
     nav a {
-      color: var(--header-text);
       text-decoration: none;
+      color: var(--header-text);
       margin-left: 20px;
       font-weight: bold;
       transition: color 0.3s;
     }
 
     nav a:hover {
-      color: #ffcc00;
+      color: var(--accent-color);
     }
 
+    .dark-toggle {
+      cursor: pointer;
+      margin-left: 20px;
+      border: 1px solid var(--header-text);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 0 20px;
+      background: linear-gradient(135deg, #ff5500, #111);
+      color: #fff;
+      animation: fadeIn 2s ease;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin: 10px 0 30px;
+    }
+
+    .hero .buttons a {
+      text-decoration: none;
+      color: #fff;
+      background: var(--accent-color);
+      padding: 12px 25px;
+      margin: 10px;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .hero .buttons a:hover {
+      background: #fff;
+      color: var(--accent-color);
+    }
+
+    /* Sections */
     main {
       max-width: 900px;
-      margin: 30px auto;
-      padding: 0 20px;
+      margin: 0 auto;
+      padding: 50px 20px;
     }
 
     section {
-      margin-bottom: 50px;
+      margin-bottom: 60px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     h2 {
-      color: var(--primary-color);
+      color: var(--accent-color);
       text-align: center;
       margin-bottom: 20px;
+      font-size: 2rem;
     }
 
-    a.button {
+    .resume-buttons a {
       display: inline-block;
+      margin: 10px;
       padding: 10px 20px;
-      margin: 10px 5px 20px;
-      background-color: var(--primary-color);
-      color: white;
+      border-radius: 50px;
+      background: var(--accent-color);
+      color: #fff;
       text-decoration: none;
-      border-radius: 5px;
-      transition: background 0.3s;
+      font-weight: bold;
+      transition: 0.3s;
     }
 
-    a.button:hover {
-      background-color: #005fa3;
+    .resume-buttons a:hover {
+      background: #111;
+      color: var(--accent-color);
     }
 
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: 1px solid #ccc;
-      margin-top: 20px;
+    /* Lists */
+    .experience, .education, .certifications {
+      list-style: none;
+      padding: 0;
     }
 
-    /* Floating download button */
+    .experience li, .education li, .certifications li {
+      margin-bottom: 15px;
+    }
+
+    /* Floating Download Button */
     .floating-download {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background-color: var(--primary-color);
-      color: white;
-      padding: 15px 20px;
+      background: var(--accent-color);
+      color: #fff;
+      padding: 15px 25px;
       border-radius: 50px;
+      font-weight: bold;
       text-decoration: none;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-      transition: background 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: 0.3s;
       z-index: 1000;
     }
 
     .floating-download:hover {
-      background-color: #005fa3;
-    }
-
-    /* Dark mode toggle */
-    .dark-toggle {
-      cursor: pointer;
-      padding: 5px 10px;
-      border: 1px solid white;
-      border-radius: 5px;
-      font-size: 0.9rem;
+      background: #111;
+      color: var(--accent-color);
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      background-color: #e0e0e0;
-      margin-top: 40px;
+      padding: 30px;
+      background: var(--header-bg);
+      color: var(--header-text);
     }
 
-    body.dark footer {
-      background-color: #1f1f1f;
-      color: #e0e0e0;
+    /* Animations */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(50px);}
+      to {opacity: 1; transform: translateY(0);}
     }
   </style>
 </head>
@@ -149,48 +208,111 @@
     <h1>Arun Kare</h1>
     <nav>
       <a href="#resume">Resume</a>
-      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
-      <span class="dark-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</span>
+      <span class="dark-toggle" onclick="toggleDarkMode()">🌙</span>
     </nav>
   </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Arun Kare</h1>
+    <p>Senior Atlassian Cloud Engineer | Platform Governance | Automation | Modernization</p>
+    <div class="buttons">
+      <a href="#resume">View Resume</a>
+      <a href="https://github.com/arunkare/Resume-website/raw/main/resume.pdf" download>Download PDF</a>
+    </div>
+  </section>
 
   <main>
     <!-- Resume Section -->
     <section id="resume">
-      <h2>My Resume</h2>
-      <p>
-        <a class="button" href="https://arunkare.github.io/Resume-website/assets/resume.pdf" target="_blank">View Resume</a>
-        <a class="button" href="https://arunkare.github.io/Resume-website/assets/resume.pdf" download>Download Resume</a>
-      </p>
-      <iframe src="https://arunkare.github.io/Resume-website/assets/resume.pdf"></iframe>
+      <h2>Resume</h2>
+      <div class="resume-buttons">
+        <a href="https://github.com/arunkare/Resume-website/raw/main/resume.pdf" target="_blank">Open PDF</a>
+        <a href="https://github.com/arunkare/Resume-website/raw/main/resume.pdf" download>Download PDF</a>
+      </div>
+      <iframe src="https://github.com/arunkare/Resume-website/raw/main/resume.pdf" width="100%" height="600px"></iframe>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-      <h2>About Me</h2>
-      <p>Hello! I am Arun Kare, passionate about building and exploring modern web solutions. This is my professional resume and portfolio.</p>
+    <!-- Experience -->
+    <section id="experience">
+      <h2>Professional Experience</h2>
+      <ul class="experience">
+        <li><strong>Pilot Flying J – Knoxville, TN</strong><br>Sr. Atlassian Cloud Engineer | Aug 2024 – Present<br>
+        • Administer Jira, Confluence, Loom, Rovo for 5,000+ users.<br>
+        • Scalable templates & automation reducing manual effort 40%.<br>
+        • ScriptRunner (Groovy) & workflow standardization.</li>
+
+        <li><strong>Prudential Financial – Newark, NJ</strong><br>Senior Atlassian Administrator | Feb 2022 – Jul 2024<br>
+        • Migration DC → Cloud (89,000+ users).<br>
+        • Governance frameworks & REST/Python automation.<br>
+        • Jira-ServiceNow integration & Marketplace app evaluation.</li>
+
+        <li><strong>Move Inc – Santa Clara, CA</strong><br>Sr. DevOps / Atlassian Engineer | Mar 2021 – Jan 2022<br>
+        • Jira/Confluence AWS & Azure deployments.<br>
+        • Terraform, Python, CloudFormation automation.</li>
+      </ul>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Education -->
+    <section id="education">
+      <h2>Education</h2>
+      <ul class="education">
+        <li>Master of Science in Computer Science – New England College, NH</li>
+        <li>Bachelor of Technology in Computer Science & Engineering – Andhra Pradesh, India</li>
+      </ul>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications">
+      <h2>Certifications</h2>
+      <ul class="certifications">
+        <li>Atlassian Certified Professional (ACP-120)</li>
+        <li>Atlassian Agile Project Management Professional</li>
+        <li>Atlassian Rovo Fundamentals</li>
+        <li>AWS Certified Solutions Architect – Associate</li>
+        <li>Docker Foundations Professional Certificate</li>
+      </ul>
+    </section>
+
+    <!-- Contact -->
     <section id="contact">
-      <h2>Contact Me</h2>
-      <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:arunsagarkare222@gmail.com">arunsagarkare222@gmail.com</a></p>
+      <p>Phone: 508-709-9119</p>
       <p>LinkedIn: <a href="https://www.linkedin.com/in/arunkare" target="_blank">linkedin.com/in/arunkare</a></p>
     </section>
   </main>
 
   <!-- Floating Download Button -->
-  <a class="floating-download" href="https://arunkare.github.io/Resume-website/assets/resume.pdf" download>Download Resume</a>
+  <a class="floating-download" href="https://github.com/arunkare/Resume-website/raw/main/resume.pdf" download>Download Resume</a>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2026 Arun Kare. All rights reserved.</p>
+    &copy; 2026 Arun Kare. All Rights Reserved.
   </footer>
 
+  <!-- Scripts -->
   <script>
+    // Dark Mode Toggle
     function toggleDarkMode() {
       document.body.classList.toggle('dark');
     }
+
+    // Scroll animations
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
   </script>
 
 </body>
