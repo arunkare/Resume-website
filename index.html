@@ -69,6 +69,11 @@ footer { text-align:center; padding:30px; background: var(--header-bg); color: v
 @media screen and (min-width:1300px) {
   .card { flex: 1 1 calc(33% - 20px); }
 }
+
+/* Hover shadow for background sections */
+section[data-parallax] { transition: box-shadow 0.4s ease, transform 0.4s ease; }
+#contact::before { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index:0; }
+#contact * { position: relative; z-index:1; }
 </style>
 </head>
 <body>
@@ -107,32 +112,26 @@ footer { text-align:center; padding:30px; background: var(--header-bg); color: v
   <section id="experience" data-parallax style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80')">
     <h2>Professional Experience</h2>
     <div class="card-container">
-      <div class="card left">
-        <div class="card-inner">
-          <h3>Pilot Flying J – Knoxville, TN</h3>
-          <p>Sr. Atlassian Cloud Engineer | Aug 2024 – Present</p>
-          <p>• Administer Jira, Confluence, Loom, Rovo for 5,000+ users.</p>
-          <p>• Scalable templates & automation reducing manual effort 40%.</p>
-          <p>• ScriptRunner (Groovy) & workflow standardization.</p>
-        </div>
-      </div>
-      <div class="card right">
-        <div class="card-inner">
-          <h3>Prudential Financial – Newark, NJ</h3>
-          <p>Senior Atlassian Administrator | Feb 2022 – Jul 2024</p>
-          <p>• Migration DC → Cloud (89,000+ users).</p>
-          <p>• Governance frameworks & REST/Python automation.</p>
-          <p>• Jira-ServiceNow integration & Marketplace app evaluation.</p>
-        </div>
-      </div>
-      <div class="card left">
-        <div class="card-inner">
-          <h3>Move Inc – Santa Clara, CA</h3>
-          <p>Sr. DevOps / Atlassian Engineer | Mar 2021 – Jan 2022</p>
-          <p>• Jira/Confluence AWS & Azure deployments.</p>
-          <p>• Terraform, Python, CloudFormation automation.</p>
-        </div>
-      </div>
+      <div class="card left"><div class="card-inner">
+        <h3>Pilot Flying J – Knoxville, TN</h3>
+        <p>Sr. Atlassian Cloud Engineer | Aug 2024 – Present</p>
+        <p>• Administer Jira, Confluence, Loom, Rovo for 5,000+ users.</p>
+        <p>• Scalable templates & automation reducing manual effort 40%.</p>
+        <p>• ScriptRunner (Groovy) & workflow standardization.</p>
+      </div></div>
+      <div class="card right"><div class="card-inner">
+        <h3>Prudential Financial – Newark, NJ</h3>
+        <p>Senior Atlassian Administrator | Feb 2022 – Jul 2024</p>
+        <p>• Migration DC → Cloud (89,000+ users).</p>
+        <p>• Governance frameworks & REST/Python automation.</p>
+        <p>• Jira-ServiceNow integration & Marketplace app evaluation.</p>
+      </div></div>
+      <div class="card left"><div class="card-inner">
+        <h3>Move Inc – Santa Clara, CA</h3>
+        <p>Sr. DevOps / Atlassian Engineer | Mar 2021 – Jan 2022</p>
+        <p>• Jira/Confluence AWS & Azure deployments.</p>
+        <p>• Terraform, Python, CloudFormation automation.</p>
+      </div></div>
     </div>
   </section>
 
@@ -175,7 +174,7 @@ footer { text-align:center; padding:30px; background: var(--header-bg); color: v
 <script>
 function toggleDarkMode(){ document.body.classList.toggle('dark'); }
 
-// Intersection Observer for staggered card & section animations
+// Intersection Observer for staggered animations
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -196,7 +195,7 @@ const observer = new IntersectionObserver(entries=>{
 }, { threshold:0.2 });
 document.querySelectorAll('section').forEach(el => observer.observe(el));
 
-// Smooth scroll for nav links
+// Smooth scroll nav links
 document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e){
     e.preventDefault();
@@ -204,7 +203,7 @@ document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Parallax effect for all sections
+// Parallax & hover shadow effect
 window.addEventListener('scroll', ()=>{
   document.querySelectorAll('section[data-parallax]').forEach(section=>{
     const speed = 0.2;
@@ -212,8 +211,27 @@ window.addEventListener('scroll', ()=>{
     section.style.backgroundPosition = `center ${-offset}px`;
   });
 });
+document.querySelectorAll('section[data-parallax]').forEach(section => {
+  section.addEventListener('mousemove', e => {
+    const rect = section.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width/2;
+    const cy = rect.height/2;
+    const dx = (x - cx)/cx;
+    const dy = (y - cy)/cy;
+    const maxTranslate = 5;
+    const maxShadow = 0.3;
+    section.style.transform = `translateY(${dy*maxTranslate}px) scale(1.01)`;
+    section.style.boxShadow = `${-dx*20}px ${dy*20}px 40px rgba(0,0,0,${maxShadow})`;
+  });
+  section.addEventListener('mouseleave', () => {
+    section.style.transform = '';
+    section.style.boxShadow = '';
+  });
+});
 
-// Subtle hover parallax for cards
+// Hover 3D parallax for cards
 document.querySelectorAll('.card').forEach(card => {
   const inner = card.querySelector('.card-inner');
   card.addEventListener('mousemove', e => {
