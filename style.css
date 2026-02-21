@@ -1,67 +1,121 @@
+:root {
+  --bg: #ffffff;
+  --text: #111;
+  --accent: #0052cc;
+}
+
+body.dark {
+  --bg: #0f172a;
+  --text: #f1f5f9;
+}
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f5f7fa;
-    color: #333;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s ease;
 }
 
-header {
-    background: #1f2933;
-    color: #fff;
-    padding: 30px;
-    text-align: center;
+.header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.7);
+  padding: 10px 0;
+  z-index: 1000;
 }
 
-header h1 {
-    margin: 0;
+body.dark .header {
+  background: rgba(15,23,42,0.7);
 }
 
-.contact {
-    margin-top: 10px;
-    font-size: 14px;
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: auto;
 }
 
-section {
-    background: #fff;
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 900px;
-    border-radius: 6px;
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
 }
 
-h2 {
-    border-bottom: 2px solid #e5e7eb;
-    padding-bottom: 5px;
+nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
 }
 
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #0052cc, #2684ff);
+  color: white;
 }
 
-.skills li {
-    background: #e5e7eb;
-    margin: 5px;
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 14px;
+.section {
+  padding: 80px 10%;
 }
 
-.job h3 {
-    margin-bottom: 5px;
+.timeline {
+  border-left: 3px solid var(--accent);
+  padding-left: 20px;
 }
 
-.date {
-    font-size: 13px;
-    color: #666;
+.timeline-item {
+  margin-bottom: 40px;
+  position: relative;
+  transition: transform 0.3s ease;
 }
 
-footer {
-    text-align: center;
-    padding: 15px;
-    font-size: 14px;
-    color: #666;
+.timeline-item:hover {
+  transform: translateX(5px);
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills-grid span {
+  background: var(--accent);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.download-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--accent);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: 0.3s ease;
+}
+
+.download-btn:hover {
+  transform: scale(1.1);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
