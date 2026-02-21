@@ -5,25 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arun Kare - Resume</title>
   <style>
+    /* Base Styles */
+    :root {
+      --primary-color: #007acc;
+      --bg-color: #f5f5f5;
+      --text-color: #333;
+      --header-bg: #007acc;
+      --header-text: white;
+    }
+
     body {
       font-family: Arial, sans-serif;
       line-height: 1.6;
       margin: 0;
       padding: 0;
-      background-color: #f5f5f5;
-      color: #333;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* Dark mode */
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --header-bg: #1f1f1f;
+      --header-text: #e0e0e0;
     }
 
     header {
-      background-color: #007acc;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
+      background-color: var(--header-bg);
+      color: var(--header-text);
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 1.8rem;
+    }
+
+    nav a {
+      color: var(--header-text);
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
     }
 
     main {
@@ -33,20 +70,20 @@
     }
 
     section {
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
     h2 {
-      color: #007acc;
-      margin-bottom: 20px;
+      color: var(--primary-color);
       text-align: center;
+      margin-bottom: 20px;
     }
 
     a.button {
       display: inline-block;
       padding: 10px 20px;
-      margin: 10px 0;
-      background-color: #007acc;
+      margin: 10px 5px 20px;
+      background-color: var(--primary-color);
       color: white;
       text-decoration: none;
       border-radius: 5px;
@@ -64,48 +101,79 @@
       margin-top: 20px;
     }
 
+    /* Floating download button */
+    .floating-download {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      transition: background 0.3s;
+      z-index: 1000;
+    }
+
+    .floating-download:hover {
+      background-color: #005fa3;
+    }
+
+    /* Dark mode toggle */
+    .dark-toggle {
+      cursor: pointer;
+      padding: 5px 10px;
+      border: 1px solid white;
+      border-radius: 5px;
+      font-size: 0.9rem;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
       background-color: #e0e0e0;
       margin-top: 40px;
     }
+
+    body.dark footer {
+      background-color: #1f1f1f;
+      color: #e0e0e0;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Header -->
   <header>
     <h1>Arun Kare</h1>
-    <p>Welcome to my Resume Website</p>
+    <nav>
+      <a href="#resume">Resume</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <span class="dark-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</span>
+    </nav>
   </header>
 
+  <!-- Main content -->
   <main>
+    <!-- Resume Section -->
     <section id="resume">
       <h2>My Resume</h2>
-
-      <!-- 1. View Resume -->
       <p>
-        <a class="button" href="https://arunkare.github.io/Resume-website/resume.pdf" target="_blank">
-          View Resume
-        </a>
+        <a class="button" href="https://arunkare.github.io/Resume-website/resume.pdf" target="_blank">View Resume</a>
+        <a class="button" href="https://arunkare.github.io/Resume-website/resume.pdf" download>Download Resume</a>
       </p>
-
-      <!-- 2. Download Resume -->
-      <p>
-        <a class="button" href="https://arunkare.github.io/Resume-website/resume.pdf" download>
-          Download Resume
-        </a>
-      </p>
-
-      <!-- 3. Embed Resume -->
       <iframe src="https://arunkare.github.io/Resume-website/resume.pdf"></iframe>
     </section>
 
+    <!-- About Section -->
     <section id="about">
       <h2>About Me</h2>
       <p>Hello! I am Arun Kare, passionate about building and exploring modern web solutions. This is my professional resume and portfolio.</p>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact">
       <h2>Contact Me</h2>
       <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
@@ -113,9 +181,19 @@
     </section>
   </main>
 
+  <!-- Floating Download Button -->
+  <a class="floating-download" href="https://arunkare.github.io/Resume-website/resume.pdf" download>Download Resume</a>
+
   <footer>
     <p>&copy; 2026 Arun Kare. All rights reserved.</p>
   </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
 
 </body>
 </html>
